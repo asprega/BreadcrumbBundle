@@ -1,0 +1,29 @@
+{
+    "name": "asprega/breadcrumb-bundle",
+    "description": "A bundle for generating dynamic breadcrumbs in Symfony2 applications",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "keywords": [ "Breadcrumb", "Breadcrumbs", "Symfony", "Bundle" ],
+    "authors": [
+        {
+            "name": "Andrea Sprega",
+            "email": "andreasprega@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php":                      ">=5.5.0",
+        "symfony/framework-bundle": "~2.3|~3.0",
+        "symfony/property-access":  "~2.3|~3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.8",
+        "mockery/mockery": "~0.9"
+    },
+    "autoload": {
+        "psr-4": { "AndreaSprega\\Bundle\\BreadcrumbBundle\\": "" }
+    },
+    "archive": {
+        "exclude": [ "/Tests" ]
+    }
+}

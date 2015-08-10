@@ -1,0 +1,10 @@
+{% for item in items %}
+  {% if item.url %}
+    <a href="{{ item.url }}">{{ item.translatedLabel }}</a>
+  {% else %}
+    {{ item.translatedLabel }}
+  {% endif %}
+  {% if not loop.last %}
+    &gt;
+  {% endif %}
+{% endfor %}
