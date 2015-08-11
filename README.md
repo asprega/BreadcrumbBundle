@@ -1,6 +1,9 @@
 # AndreaSpregaBreadcrumbBundle
 
+[![Latest Stable Version](https://poser.pugx.org/asprega/breadcrumb-bundle/v/stable)](https://packagist.org/packages/asprega/breadcrumb-bundle)
 [![Build Status](https://travis-ci.org/asprega/BreadcrumbBundle.svg)](https://travis-ci.org/asprega/BreadcrumbBundle)
+[![Total Downloads](https://poser.pugx.org/asprega/breadcrumb-bundle/downloads)](https://packagist.org/packages/asprega/breadcrumb-bundle)
+[![License](https://poser.pugx.org/asprega/breadcrumb-bundle/license)](https://packagist.org/packages/asprega/breadcrumb-bundle)
 
 This bundle provides a way to create "dynamic" breadcrumbs in your Symfony2 applications.
 
