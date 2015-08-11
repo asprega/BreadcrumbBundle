@@ -10,7 +10,8 @@ use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**
- * TODO class description
+ * Transforms BreadcrumbItems in ProcessedBreadcrumbItems by translating or gathering the value for the label and
+ * turning the route + parameters into a URL.
  */
 class BreadcrumbItemProcessor
 {

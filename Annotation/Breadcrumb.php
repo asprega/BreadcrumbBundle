@@ -2,8 +2,6 @@
 
 namespace AndreaSprega\Bundle\BreadcrumbBundle\Annotation;
 
-use Doctrine\Common\Annotations\Annotation;
-
 /**
  * @Annotation
  * @Target({"CLASS","METHOD"})

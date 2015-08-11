@@ -54,7 +54,7 @@ class AppKernel extends Kernel
 There are two ways to create a breadcrumb: via code (1) or via annotations (2).
 
 *Via code*: you can retrieve the breadcrumb builder in your controller and add breadcrumb items:
- 
+
 ``` php
 public function coolStuffAction()
 {
@@ -64,7 +64,7 @@ public function coolStuffAction()
     $builder->addItem('home', 'home_route');
     $builder->addItem('$entity.property', 'entity_route');
     $builder->addItem('cool_stuff');
-    
+
     // ...
 }
 ```
