@@ -1,5 +1,7 @@
 # AndreaSpregaBreadcrumbBundle
 
+[![Build Status](https://travis-ci.org/asprega/BreadcrumbBundle.svg)](https://travis-ci.org/asprega/BreadcrumbBundle)
+
 This bundle provides a way to create "dynamic" breadcrumbs in your Symfony2 applications.
 
 ## Installation
