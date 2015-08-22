@@ -37,7 +37,7 @@ class Breadcrumb
 
         // $items can be either a single item or an array of items, for convenience. Normalize it to an array of items.
         if (array_key_exists('label', $items['value'])) {
-            $normalizedItems[] = $items['value'];
+            $normalizedItems = [ $items['value'] ];
         } else {
             $normalizedItems = $items['value'];
         }

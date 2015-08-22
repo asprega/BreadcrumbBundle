@@ -83,7 +83,7 @@ class BreadcrumbItemProcessor
             }
         }
 
-        if ($item->getRoute()) {
+        if ($item->getRoute() !== null) {
             $processedUrl = $this->router->generate($item->getRoute(), $params);
         } else {
             $processedUrl = null;

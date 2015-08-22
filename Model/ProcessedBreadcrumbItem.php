@@ -18,8 +18,8 @@ class ProcessedBreadcrumbItem
     private $url;
 
     /**
-     * @param string $translatedLabel
-     * @param null   $url
+     * @param string      $translatedLabel
+     * @param string|null $url
      */
     public function __construct($translatedLabel, $url = null)
     {
