@@ -5,7 +5,7 @@ services:
             - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
         arguments:
             - @asprega.breadcrumb.builder
-            - @annotations.reader
+            - @annotation_reader
 
     asprega.breadcrumb.builder:
         class: AndreaSprega\Bundle\BreadcrumbBundle\Service\BreadcrumbBuilder
