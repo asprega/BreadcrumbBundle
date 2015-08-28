@@ -21,7 +21,7 @@ Or, if you prefer, you can require any version in your `composer.json`:
 ``` json
 {
     "require": {
-        "eightpoints/guzzle-bundle": "*"
+        "asprega/breadcrumb-bundle": "*"
     }
 }
 ```
