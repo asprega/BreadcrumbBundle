@@ -4,13 +4,13 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
         arguments:
-            - @asprega.breadcrumb.builder
-            - @annotation_reader
+            - '@asprega.breadcrumb.builder'
+            - '@annotation_reader'
 
     asprega.breadcrumb.builder:
         class: AndreaSprega\Bundle\BreadcrumbBundle\Service\BreadcrumbBuilder
         arguments:
-            - @asprega.breadcrumb.item_factory
+            - '@asprega.breadcrumb.item_factory'
 
     asprega.breadcrumb.item_factory:
         class: AndreaSprega\Bundle\BreadcrumbBundle\Service\BreadcrumbItemFactory
@@ -18,16 +18,16 @@ services:
     asprega.breadcrumb.item_processor:
         class: AndreaSprega\Bundle\BreadcrumbBundle\Service\BreadcrumbItemProcessor
         arguments:
-            - @property_accessor
-            - @translator
-            - @router
-            - @request_stack
+            - '@property_accessor'
+            - '@translator'
+            - '@router'
+            - '@request_stack'
 
     asprega.breadcrumb.twig_extension:
         class: AndreaSprega\Bundle\BreadcrumbBundle\Twig\BreadcrumbExtension
         arguments:
-            - @asprega.breadcrumb.builder
-            - @asprega.breadcrumb.item_processor
-            - %asprega_breadcrumb.template%
+            - '@asprega.breadcrumb.builder'
+            - '@asprega.breadcrumb.item_processor'
+            - '%asprega_breadcrumb.template%'
         tags:
             - { name: twig.extension }
