@@ -31,13 +31,15 @@ class BreadcrumbBuilder
     /**
      * Adds a new breadcrumb item.
      *
-     * @param string      $label
+     * @param string $label
      * @param string|null $route
      * @param array|null $routeParams
+     * @return BreadcrumbBuilder
      */
     public function addItem($label, $route = null, array $routeParams = null)
     {
         $this->items[] = $this->itemFactory->create($label, $route, $routeParams);
+        return $this;
     }
 
     /**
