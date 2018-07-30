@@ -34,6 +34,7 @@ class BreadcrumbListener
      */
     public function onKernelController(FilterControllerEvent $event)
     {
+        // Verification for non-array getController() such as ADR pattern: https://github.com/pmjones/adr
         if(!is_array($event->getController())) {
             return;
         }
