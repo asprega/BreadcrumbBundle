@@ -34,6 +34,9 @@ class BreadcrumbListener
      */
     public function onKernelController(FilterControllerEvent $event)
     {
+        if(!is_array($event->getController())) {
+            return;
+        }
         list($controller, $action) = $event->getController();
 
         $class = new \ReflectionClass($controller);
