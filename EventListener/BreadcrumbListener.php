@@ -21,7 +21,7 @@ class BreadcrumbListener
 
     /**
      * @param BreadcrumbBuilder $breadcrumbBuilder
-     * @param Reader            $annotationReader
+     * @param Reader $annotationReader
      */
     public function __construct(BreadcrumbBuilder $breadcrumbBuilder, Reader $annotationReader)
     {
@@ -34,6 +34,11 @@ class BreadcrumbListener
      */
     public function onKernelController(FilterControllerEvent $event)
     {
+        // In case controller is not an array (e.g. a closure or an invokable class), we can't do anything.
+        if (!is_array($event->getController())) {
+            return;
+        }
+
         list($controller, $action) = $event->getController();
 
         $class = new \ReflectionClass($controller);
