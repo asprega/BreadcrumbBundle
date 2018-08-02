@@ -1,6 +1,6 @@
 {
     "name": "asprega/breadcrumb-bundle",
-    "description": "A bundle for generating dynamic breadcrumbs in Symfony2 applications",
+    "description": "A bundle for generating dynamic breadcrumbs in Symfony applications",
     "type": "symfony-bundle",
     "license": "MIT",
     "keywords": [ "Breadcrumb", "Breadcrumbs", "Symfony", "Bundle" ],
@@ -12,10 +12,10 @@
         }
     ],
     "require": {
-        "php":                      ">=5.5.0",
-        "doctrine/common":          "~2.3",
+        "php": ">=5.5.0",
+        "doctrine/common": "~2.3",
         "symfony/framework-bundle": "~2.3|~3.0",
-        "symfony/property-access":  "~2.3|~3.0"
+        "symfony/property-access": "~2.3|~3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.8",
