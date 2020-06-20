@@ -3,12 +3,16 @@
 namespace AndreaSprega\Bundle\BreadcrumbBundle\Tests\Annotation;
 
 use AndreaSprega\Bundle\BreadcrumbBundle\Annotation\Breadcrumb;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \AndreaSprega\Bundle\BreadcrumbBundle\Annotation\Breadcrumb
  */
-class BreadcrumbTest extends \PHPUnit_Framework_TestCase
+class BreadcrumbTest extends TestCase
 {
+    use MockeryPHPUnitIntegration;
+
     /**
      * The annotation can't be created when the root key is not "value".
      *
@@ -16,7 +20,7 @@ class BreadcrumbTest extends \PHPUnit_Framework_TestCase
      */
     public function test_constructor_invalidData_shouldThrowException()
     {
-        $this->setExpectedException(\RuntimeException::class);
+        $this->expectException(\RuntimeException::class);
 
         new Breadcrumb([ 'randomKey' => [] ]);
     }
@@ -42,7 +46,7 @@ class BreadcrumbTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals([ 'param' => 'value' ], $annotation->items[0]['params']);
         $this->assertEquals('anotherLabel', $annotation->items[1]['label']);
         $this->assertEquals('anotherRoute', $annotation->items[1]['route']);
-        $this->assertFalse(array_key_exists('params', $annotation->items[1]));
+        $this->assertArrayNotHasKey('params', $annotation->items[1]);
     }
 
     /**

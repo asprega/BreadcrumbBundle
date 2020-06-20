@@ -12,10 +12,10 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $builder = new TreeBuilder();
-        $builder->root('asprega_breadcrumb')
+        $builder = new TreeBuilder('asprega_breadcrumb');
+        $builder->getRootNode()
             ->children()
-                ->scalarNode('template')->defaultValue('AndreaSpregaBreadcrumbBundle::breadcrumb.html.twig')->end()
+                ->scalarNode('template')->defaultValue('@AndreaSpregaBreadcrumb/breadcrumb.html.twig')->end()
             ->end();
         return $builder;
     }

@@ -7,7 +7,7 @@ use AndreaSprega\Bundle\BreadcrumbBundle\Model\ProcessedBreadcrumbItem;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Transforms BreadcrumbItems in ProcessedBreadcrumbItems by translating or gathering the value for the label and
@@ -35,12 +35,6 @@ class BreadcrumbItemProcessor
      */
     private $translator;
 
-    /**
-     * @param PropertyAccessorInterface $propertyAccessor
-     * @param TranslatorInterface       $translator
-     * @param RouterInterface           $router
-     * @param RequestStack              $requestStack
-     */
     public function __construct(
         PropertyAccessorInterface $propertyAccessor,
         TranslatorInterface $translator,
@@ -53,12 +47,7 @@ class BreadcrumbItemProcessor
         $this->requestStack = $requestStack;
     }
 
-    /**
-     * @param BreadcrumbItem $item
-     * @param array          $variables
-     * @return ProcessedBreadcrumbItem
-     */
-    public function process(BreadcrumbItem $item, $variables)
+    public function process(BreadcrumbItem $item, array $variables): ProcessedBreadcrumbItem
     {
         // Process the label
         if ($item->getLabel()[0] === '$') {
@@ -94,12 +83,8 @@ class BreadcrumbItemProcessor
 
     /**
      * Returns the value contained in the property path targeted by the given expression.
-     *
-     * @param string $expression
-     * @param array $variables
-     * @return mixed
      */
-    private function parseValue($expression, $variables)
+    private function parseValue(string $expression, array $variables)
     {
         list($variable, $propertyPath) = explode('.', $expression, 2);
         $variable = substr($variable, 1); // Remove the $ prefix

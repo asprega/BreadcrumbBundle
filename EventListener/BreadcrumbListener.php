@@ -5,7 +5,7 @@ namespace AndreaSprega\Bundle\BreadcrumbBundle\EventListener;
 use AndreaSprega\Bundle\BreadcrumbBundle\Annotation\Breadcrumb;
 use AndreaSprega\Bundle\BreadcrumbBundle\Service\BreadcrumbBuilder;
 use Doctrine\Common\Annotations\Reader;
-use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
+use Symfony\Component\HttpKernel\Event\ControllerEvent;
 
 class BreadcrumbListener
 {
@@ -19,20 +19,13 @@ class BreadcrumbListener
      */
     private $breadcrumbBuilder;
 
-    /**
-     * @param BreadcrumbBuilder $breadcrumbBuilder
-     * @param Reader $annotationReader
-     */
     public function __construct(BreadcrumbBuilder $breadcrumbBuilder, Reader $annotationReader)
     {
         $this->breadcrumbBuilder = $breadcrumbBuilder;
         $this->annotationReader = $annotationReader;
     }
 
-    /**
-     * @param FilterControllerEvent $event
-     */
-    public function onKernelController(FilterControllerEvent $event)
+    public function onKernelController(ControllerEvent $event)
     {
         // In case controller is not an array (e.g. a closure or an invokable class), we can't do anything.
         if (!is_array($event->getController())) {

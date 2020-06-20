@@ -3,13 +3,17 @@
 namespace AndreaSprega\Bundle\BreadcrumbBundle\Tests\DependencyInjection;
 
 use AndreaSprega\Bundle\BreadcrumbBundle\DependencyInjection\Configuration;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Processor;
 
 /**
  * @coversDefaultClass \AndreaSprega\Bundle\BreadcrumbBundle\DependencyInjection\Configuration
  */
-class ConfigurationTest extends \PHPUnit_Framework_TestCase
+class ConfigurationTest extends TestCase
 {
+    use MockeryPHPUnitIntegration;
+
     /**
      * Tests the configuration when overriding the template.
      *
@@ -24,7 +28,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         ];
 
         $processor = new Processor();
-        $processedConfig = $processor->processConfiguration(new Configuration(true), $config);
+        $processedConfig = $processor->processConfiguration(new Configuration(), $config);
 
         $this->assertEquals([ 'template' => 'aTemplate.html.twig' ], $processedConfig);
     }

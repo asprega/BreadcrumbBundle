@@ -4,12 +4,16 @@ namespace AndreaSprega\Bundle\BreadcrumbBundle\Tests\Service;
 
 use AndreaSprega\Bundle\BreadcrumbBundle\Model\BreadcrumbItem;
 use AndreaSprega\Bundle\BreadcrumbBundle\Service\BreadcrumbItemFactory;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \AndreaSprega\Bundle\BreadcrumbBundle\Service\BreadcrumbItemFactory
  */
-class BreadcrumbItemFactoryTest extends \PHPUnit_Framework_TestCase
+class BreadcrumbItemFactoryTest extends TestCase
 {
+    use MockeryPHPUnitIntegration;
+
     /**
      * @covers ::create
      */

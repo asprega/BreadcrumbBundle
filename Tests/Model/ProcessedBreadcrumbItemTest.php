@@ -3,12 +3,16 @@
 namespace AndreaSprega\Bundle\BreadcrumbBundle\Tests\Model;
 
 use AndreaSprega\Bundle\BreadcrumbBundle\Model\ProcessedBreadcrumbItem;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \AndreaSprega\Bundle\BreadcrumbBundle\Model\ProcessedBreadcrumbItem
  */
-class ProcessedBreadcrumbItemTest extends \PHPUnit_Framework_TestCase
+class ProcessedBreadcrumbItemTest extends TestCase
 {
+    use MockeryPHPUnitIntegration;
+
     /**
      * @covers ::__construct
      * @covers ::getTranslatedLabel
