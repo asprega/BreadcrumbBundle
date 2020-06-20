@@ -23,44 +23,24 @@ class BreadcrumbItem
      */
     private $routeParams;
 
-    /**
-     * @param string $label
-     * @param string $route
-     * @param array  $routeParams
-     */
-    public function __construct($label, $route = null, $routeParams = null)
+    public function __construct(string $label, ?string $route = null, ?array $routeParams = null)
     {
         $this->label = $label;
         $this->route = $route;
         $this->routeParams = $routeParams;
     }
 
-    /**
-     * Returns the label for this breadcrumb item.
-     *
-     * @return string
-     */
-    public function getLabel()
+    public function getLabel(): string
     {
         return $this->label;
     }
 
-    /**
-     * Returns the route name for this breadcrumb item.
-     *
-     * @return string|null
-     */
-    public function getRoute()
+    public function getRoute(): ?string
     {
         return $this->route;
     }
 
-    /**
-     * Returns the route parameters for this breadcrumb item.
-     *
-     * @return array|null
-     */
-    public function getRouteParams()
+    public function getRouteParams(): ?array
     {
         return $this->routeParams;
     }

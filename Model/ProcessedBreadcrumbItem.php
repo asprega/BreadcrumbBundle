@@ -17,32 +17,18 @@ class ProcessedBreadcrumbItem
      */
     private $url;
 
-    /**
-     * @param string      $translatedLabel
-     * @param string|null $url
-     */
-    public function __construct($translatedLabel, $url = null)
+    public function __construct(string $translatedLabel, ?string $url = null)
     {
         $this->translatedLabel = $translatedLabel;
         $this->url = $url;
     }
 
-    /**
-     * Returns the translated label for this processed breadcrumb item.
-     *
-     * @return string
-     */
-    public function getTranslatedLabel()
+    public function getTranslatedLabel(): string
     {
         return $this->translatedLabel;
     }
 
-    /**
-     * Returns the URL (if present) for this processed breadcrumb item.
-     *
-     * @return string|null
-     */
-    public function getUrl()
+    public function getUrl(): ?string
     {
         return $this->url;
     }

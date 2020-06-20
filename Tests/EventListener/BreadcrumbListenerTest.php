@@ -1,15 +1,23 @@
 <?php
 
+namespace AndreaSprega\Bundle\BreadcrumbBundle\Tests\EventListener;
+
 use AndreaSprega\Bundle\BreadcrumbBundle\EventListener\BreadcrumbListener;
 use AndreaSprega\Bundle\BreadcrumbBundle\Service\BreadcrumbBuilder;
 use Doctrine\Common\Annotations\Reader;
-use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Event\ControllerEvent;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 /**
  * @coversDefaultClass \AndreaSprega\Bundle\BreadcrumbBundle\EventListener\BreadcrumbListener
  */
-class BreadcrumbListenerTest extends \PHPUnit_Framework_TestCase
+class BreadcrumbListenerTest extends TestCase
 {
+    use MockeryPHPUnitIntegration;
+
     /**
      * @test
      */
@@ -20,7 +28,13 @@ class BreadcrumbListenerTest extends \PHPUnit_Framework_TestCase
 
         $SUT = new BreadcrumbListener($breadcrumbBuilder, $annotationReader);
 
-        $event = \Mockery::mock(FilterControllerEvent::class, ['getController' => function () {}]);
+        $event = new ControllerEvent(
+            \Mockery::spy(HttpKernelInterface::class),
+            function () {},
+            \Mockery::mock(Request::class),
+            HttpKernelInterface::MASTER_REQUEST
+        );
+
         $annotationReader->shouldReceive('getClassAnnotation')->never();
         $annotationReader->shouldReceive('getMethodAnnotation')->never();
         $breadcrumbBuilder->shouldReceive('addItem')->never();

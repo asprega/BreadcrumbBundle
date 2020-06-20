@@ -24,8 +24,4 @@
         </whitelist>
     </filter>
 
-    <listeners>
-        <listener class="\Mockery\Adapter\Phpunit\TestListener" />
-    </listeners>
-
 </phpunit>

@@ -5,12 +5,16 @@ namespace AndreaSprega\Bundle\BreadcrumbBundle\Tests\Service;
 use AndreaSprega\Bundle\BreadcrumbBundle\Model\BreadcrumbItem;
 use AndreaSprega\Bundle\BreadcrumbBundle\Service\BreadcrumbBuilder;
 use AndreaSprega\Bundle\BreadcrumbBundle\Service\BreadcrumbItemFactory;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \AndreaSprega\Bundle\BreadcrumbBundle\Service\BreadcrumbBuilder
  */
-class BreadcrumbBuilderTest extends \PHPUnit_Framework_TestCase
+class BreadcrumbBuilderTest extends TestCase
 {
+    use MockeryPHPUnitIntegration;
+
     /**
      * @var BreadcrumbBuilder
      */
