@@ -80,7 +80,7 @@ public function coolStuffAction()
 use AndreaSprega\Bundle\BreadcrumbBundle\Annotation\Breadcrumb;
 
 /**
- * @Breadcrumb({"label" = "home", "route" = "home_route", "params" = { "p" = "val" } })
+ * @Breadcrumb({"label" = "home", "route" = "home_route", "params" = {"p" = "val"}, "translationDomain" = "domain" })
  */
 class CoolController extends Controller
 {
@@ -117,13 +117,14 @@ In which the first two items are anchors and the last one is text only.
 Under the hood, this is the business logic involved, for each item, in the breadcrumb generation:
 * `label` will be the printed text. It can be either:
   * A "static" string (the translator will attempt to translate it by using it as a translation key)
-  * A special string using the format `$name.property.path`. In this case, the `name` variable passed to the view will be used to extract the value at `property.path`. That value will be the breadcrumb text. This is useful when the item title should depend on an attribute (e.g. name) of a "parent" entity.
+  * A special string, prepended with `$`. In this case, the breadcrumb label will be extracted from the variable passed to the template. Property paths can be used, e.g.: `$variable.property.path`
 * `route` will be used to generate the url for the item anchor (if provided). If not provided, the item will not be clickable.
 * `params` will be used to generate the url related to the provided route. It's an associative array where each value can be either:
   * A "static" string
-  * A "special" string using the format `$name.property.path`. The treatment is exactly the same as in "label". This is useful to dynamically retrieve url params (e.g. entity ID) starting from view variables.
+  * A "special" string using the format `$variable.property.path`. The treatment is exactly the same as in "label". This is useful to dynamically retrieve url params (e.g. entity ID) starting from view variables.
+* `translationDomain` will be used to translate the key provided in the `label` attribute. If `null`, the default translation domain will be used. Provide `false` if you put a non-translatable string in `label` and you don't want to use it as a translation key.
 
-*NOTE:* one of the coolest feature of this bundle is that **you don't need to pass all the route parameters that are needed by route, as long as these route parameters are already present in the URL for the current request**. In other words, if your breadcrumb hierarchical structure somehow "matches" your URL structure.
+*NOTE:* **you don't need to pass all the route parameters that are needed by route, as long as these route parameters are already present in the URL for the current request**. In other words, if your breadcrumb hierarchical structure somehow "matches" your URL structure.
 
 Example: suppose you have the following routes, with parameters and resulting URLs:
 

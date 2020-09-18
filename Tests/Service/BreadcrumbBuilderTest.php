@@ -51,9 +51,9 @@ class BreadcrumbBuilderTest extends TestCase
     public function test_getItems_nonEmptyBreadcrumb()
     {
         $item1 = \Mockery::mock(BreadcrumbItem::class);
-        $this->itemFactory->shouldReceive('create')->with('aLabel', 'aRoute', null)->andReturn($item1);
+        $this->itemFactory->shouldReceive('create')->with('aLabel', 'aRoute', null, null)->andReturn($item1);
         $item2 = \Mockery::mock(BreadcrumbItem::class);
-        $this->itemFactory->shouldReceive('create')->with('anotherLabel', 'anotherRoute', [ 'a' => 'b' ])
+        $this->itemFactory->shouldReceive('create')->with('anotherLabel', 'anotherRoute', [ 'a' => 'b' ], null)
             ->andReturn($item2);
 
         $this->builder->addItem('aLabel', 'aRoute');

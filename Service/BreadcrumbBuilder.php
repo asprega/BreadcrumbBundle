@@ -28,9 +28,13 @@ class BreadcrumbBuilder
     /**
      * Adds a new breadcrumb item.
      */
-    public function addItem(string $label, ?string $route = null, ?array $routeParams = null): BreadcrumbBuilder
-    {
-        $this->items[] = $this->itemFactory->create($label, $route, $routeParams);
+    public function addItem(
+        ?string $label = null,
+        ?string $route = null,
+        ?array $routeParams = null,
+        $translationDomain = null
+    ): BreadcrumbBuilder {
+        $this->items[] = $this->itemFactory->create($label, $route, $routeParams, $translationDomain);
         return $this;
     }
 

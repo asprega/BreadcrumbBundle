@@ -9,7 +9,7 @@ namespace AndreaSprega\Bundle\BreadcrumbBundle\Model;
 class BreadcrumbItem
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $label;
 
@@ -23,14 +23,24 @@ class BreadcrumbItem
      */
     private $routeParams;
 
-    public function __construct(string $label, ?string $route = null, ?array $routeParams = null)
-    {
+    /**
+     * @var string|null|false - Null uses the default transation domain, passing "false" avoids translation altogether.
+     */
+    private $translationDomain;
+
+    public function __construct(
+        ?string $label = null,
+        ?string $route = null,
+        ?array $routeParams = null,
+        $translationDomain = null
+    ) {
         $this->label = $label;
         $this->route = $route;
         $this->routeParams = $routeParams;
+        $this->translationDomain = $translationDomain;
     }
 
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return $this->label;
     }
@@ -43,5 +53,13 @@ class BreadcrumbItem
     public function getRouteParams(): ?array
     {
         return $this->routeParams;
+    }
+
+    /**
+     * @return false|string|null
+     */
+    public function getTranslationDomain()
+    {
+        return $this->translationDomain;
     }
 }
