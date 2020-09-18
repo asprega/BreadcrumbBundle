@@ -50,10 +50,12 @@ class BreadcrumbItemProcessor
     public function process(BreadcrumbItem $item, array $variables): ProcessedBreadcrumbItem
     {
         // Process the label
-        if ($item->getLabel()[0] === '$') {
+        if ($item->getLabel() && $item->getLabel()[0] === '$') {
             $processedLabel = $this->parseValue($item->getLabel(), $variables);
+        } elseif (!$item->getLabel() || $item->getTranslationDomain() === false) {
+            $processedLabel = $item->getLabel();
         } else {
-            $processedLabel = $this->translator->trans($item->getLabel());
+            $processedLabel = $this->translator->trans($item->getLabel(), [], $item->getTranslationDomain());
         }
 
         // Process the route
@@ -82,18 +84,25 @@ class BreadcrumbItemProcessor
     }
 
     /**
-     * Returns the value contained in the property path targeted by the given expression.
+     * Returns the value contained in the variable name (with optional property path) of the given expression.
      */
     private function parseValue(string $expression, array $variables)
     {
-        list($variable, $propertyPath) = explode('.', $expression, 2);
-        $variable = substr($variable, 1); // Remove the $ prefix
-        if (!array_key_exists($variable, $variables)) {
+        $components = explode('.', $expression, 2);
+        $variableName = substr($components[0], 1); // Remove the $ prefix;
+        $propertyPath = $components[1] ?? null;
+
+        if (!array_key_exists($variableName, $variables)) {
             throw new \RuntimeException('The variables array passed to process the breadcrumb item does not have'
-                . ' variable "' . $variable . '". Make sure you are passing that variable to the template where this'
-                . ' breadcrumb is rendered.');
+                . ' variable "' . $variableName . '". Make sure you are passing that variable to the template in which'
+                . ' this breadcrumb is rendered.');
         }
 
-        return $this->propertyAccessor->getValue($variables[$variable], $propertyPath);
+        if (!$propertyPath) {
+            // If this is a "top level" variable, return its value directly.
+            return $variables[$variableName];
+        }
+
+        return $this->propertyAccessor->getValue($variables[$variableName], $propertyPath);
     }
 }

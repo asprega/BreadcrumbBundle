@@ -8,7 +8,7 @@ namespace AndreaSprega\Bundle\BreadcrumbBundle\Model;
 class ProcessedBreadcrumbItem
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $translatedLabel;
 
@@ -17,13 +17,13 @@ class ProcessedBreadcrumbItem
      */
     private $url;
 
-    public function __construct(string $translatedLabel, ?string $url = null)
+    public function __construct(?string $translatedLabel = null, ?string $url = null)
     {
         $this->translatedLabel = $translatedLabel;
         $this->url = $url;
     }
 
-    public function getTranslatedLabel(): string
+    public function getTranslatedLabel(): ?string
     {
         return $this->translatedLabel;
     }

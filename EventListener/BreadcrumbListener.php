@@ -50,7 +50,8 @@ class BreadcrumbListener
                 $this->breadcrumbBuilder->addItem(
                     $item['label'],
                     isset($item['route']) ? $item['route'] : null,
-                    isset($item['params']) ? $item['params'] : null
+                    isset($item['params']) ? $item['params'] : null,
+                    isset($item['translationDomain']) ? $item['translationDomain'] : null
                 );
             }
         }

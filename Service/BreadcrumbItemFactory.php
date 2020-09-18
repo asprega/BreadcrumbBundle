@@ -9,8 +9,12 @@ use AndreaSprega\Bundle\BreadcrumbBundle\Model\BreadcrumbItem;
  */
 class BreadcrumbItemFactory
 {
-    public function create(string $label, ?string $route = null, ?array $routeParams = null): BreadcrumbItem
-    {
-        return new BreadcrumbItem($label, $route, $routeParams);
+    public function create(
+        ?string $label = null,
+        ?string $route = null,
+        ?array $routeParams = null,
+        $translationDomain = null
+    ): BreadcrumbItem {
+        return new BreadcrumbItem($label, $route, $routeParams, $translationDomain);
     }
 }
