@@ -4,8 +4,11 @@ namespace AndreaSprega\Bundle\BreadcrumbBundle\Twig;
 
 use AndreaSprega\Bundle\BreadcrumbBundle\Service\BreadcrumbBuilder;
 use AndreaSprega\Bundle\BreadcrumbBundle\Service\BreadcrumbItemProcessor;
+use Twig\Environment;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-class BreadcrumbExtension extends \Twig_Extension
+class BreadcrumbExtension extends AbstractExtension
 {
     /**
      * @var BreadcrumbBuilder
@@ -40,7 +43,7 @@ class BreadcrumbExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction(
+            new TwigFunction(
                 'asprega_breadcrumb',
                 [ $this, 'renderBreadcrumb' ],
                 [
@@ -63,11 +66,9 @@ class BreadcrumbExtension extends \Twig_Extension
     /**
      * Returns the rendered breadcrumb.
      *
-     * @param \Twig_Environment $twig
-     * @param array             $context Twig context containing all the view variables.
      * @return string
      */
-    public function renderBreadcrumb(\Twig_Environment $twig, array $context)
+    public function renderBreadcrumb(Environment $twig, array $context)
     {
         $breadcrumb = [];
         foreach ($this->builder->getItems() as $item) {
