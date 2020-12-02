@@ -6,7 +6,7 @@
 [![License](https://poser.pugx.org/asprega/breadcrumb-bundle/license)](https://packagist.org/packages/asprega/breadcrumb-bundle)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/7f13817a-3765-42f5-becb-0990a1219e39/mini.png)](https://insight.sensiolabs.com/projects/7f13817a-3765-42f5-becb-0990a1219e39)
 
-This bundle provides a way to create "dynamic" breadcrumbs in your Symfony2 applications.
+This bundle provides a way to create "dynamic" breadcrumbs in your Symfony applications.
 
 ## Installation
 

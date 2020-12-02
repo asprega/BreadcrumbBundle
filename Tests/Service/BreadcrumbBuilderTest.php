@@ -25,10 +25,7 @@ class BreadcrumbBuilderTest extends TestCase
      */
     private $itemFactory;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->itemFactory = \Mockery::mock(BreadcrumbItemFactory::class);
         $this->builder = new BreadcrumbBuilder($this->itemFactory);
