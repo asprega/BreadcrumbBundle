@@ -44,7 +44,7 @@ class BreadcrumbItemProcessorTest extends TestCase
      */
     private $translator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->propertyAccessor = \Mockery::mock(PropertyAccessorInterface::class);
         $this->translator = \Mockery::mock(TranslatorInterface::class);
