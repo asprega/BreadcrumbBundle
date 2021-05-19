@@ -1,5 +1,7 @@
 # AndreaSpregaBreadcrumbBundle
 
+### WARNING: This bundle has been renamed and transferred to [https://github.com/slope-it/breadcrumb-bundle](https://github.com/slope-it/breadcrumb-bundle)
+
 [![Latest Stable Version](https://poser.pugx.org/asprega/breadcrumb-bundle/v/stable)](https://packagist.org/packages/asprega/breadcrumb-bundle)
 [![Total Downloads](https://poser.pugx.org/asprega/breadcrumb-bundle/downloads)](https://packagist.org/packages/asprega/breadcrumb-bundle)
 [![License](https://poser.pugx.org/asprega/breadcrumb-bundle/license)](https://packagist.org/packages/asprega/breadcrumb-bundle)
